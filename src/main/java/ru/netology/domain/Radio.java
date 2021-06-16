@@ -20,26 +20,28 @@ public class Radio {
         return minVolume;
     }
 
-    public void setCurrentTemperature(int currentVolume) {
+    public void setCurrentVolume(int currentVolume) {
         this.currentVolume = currentVolume;
     }
 
-    public void increaseVolume(int currentVolume) {
+    public int increaseVolume() {
         if (currentVolume < maxVolume) {
             this.currentVolume = currentVolume + 1;
         }
-        if (currentVolume >= maxVolume) {
+        else if (currentVolume >= maxVolume) {
             this.currentVolume = maxVolume;
         }
+        return currentVolume;
     }
 
-    public void decreaseVolume(int currentVolume) {
+    public int decreaseVolume() {
         if (currentVolume > minVolume) {
             this.currentVolume = currentVolume - 1;
         }
-        if (currentVolume <= minVolume) {
+        else if (currentVolume <= minVolume) {
             this.currentVolume = minVolume;
         }
+        return currentVolume;
     }
     // Переключение станций
     public int getCurrentStation() {
@@ -58,22 +60,23 @@ public class Radio {
         this.currentStation = currentStation;
     }
 
-    public void nextStation(int currentStation) {
+    public int nextStation() {
         if (currentStation < maxStation) {
             this.currentStation = currentStation + 1;
         }
-        if (currentStation >= maxStation) {
+        else if (currentStation >= maxStation) {
             this.currentStation = minStation;
         }
+        return currentStation;
     }
 
-    public void prevStation(int currentStation) {
+    public int prevStation() {
         if (currentStation > minStation) {
             this.currentStation = currentStation - 1;
         }
-        if (currentStation <= minStation) {
+        else if (currentStation <= minStation) {
             this.currentStation = maxStation;
         }
+        return currentStation;
     }
 }
-
