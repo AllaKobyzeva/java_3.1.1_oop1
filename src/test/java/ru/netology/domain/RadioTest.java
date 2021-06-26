@@ -8,28 +8,30 @@ class RadioTest {
     @Test
     public void shouldIncreaseVolumeUnderMax() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(9);
+        radio.setCurrentVolume(99);
         int actual = radio.increaseVolume();
 
-        assertEquals (10, actual);
+        assertEquals(100, actual);
 
     }
+
     @Test
     public void shouldIncreaseVolumeMax() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         int actual = radio.increaseVolume();
 
-        assertEquals (10, actual);
+        assertEquals(100, actual);
 
     }
+
     @Test
     public void shouldIncreaseVolumeOverMax() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(11);
+        radio.setCurrentVolume(101);
         int actual = radio.increaseVolume();
 
-        assertEquals (10, actual);
+        assertEquals(100, actual);
 
     }
 
@@ -39,15 +41,16 @@ class RadioTest {
         radio.setCurrentVolume(1);
         int actual = radio.decreaseVolume();
 
-        assertEquals (0, actual);
+        assertEquals(0, actual);
     }
+
     @Test
     public void shouldDecreaseVolumeMin() {
         Radio radio = new Radio();
         radio.setCurrentVolume(0);
         int actual = radio.decreaseVolume();
 
-        assertEquals (0, actual);
+        assertEquals(0, actual);
     }
 
     @Test
@@ -56,8 +59,9 @@ class RadioTest {
         radio.setCurrentVolume(-1);
         int actual = radio.decreaseVolume();
 
-        assertEquals (0, actual);
+        assertEquals(0, actual);
     }
+
     //Тесты для переключения радиостанций
     @Test
     public void shouldNextStationUnderMax() {
@@ -65,26 +69,35 @@ class RadioTest {
         radio.setCurrentStation(8);
         int actual = radio.nextStation();
 
-        assertEquals (9, actual);
+        assertEquals(9, actual);
 
     }
+
     @Test
     public void shouldNextStationMax() {
         Radio radio = new Radio();
-        radio.setCurrentStation(9);
+        radio.setCurrentStation(10);
         int actual = radio.nextStation();
 
-        assertEquals (0, actual);
+        assertEquals(0, actual);
 
     }
     @Test
     public void shouldNextStationOverMax() {
         Radio radio = new Radio();
-        radio.setCurrentStation(10);
+        radio.setCurrentStation(11);
         int actual = radio.nextStation();
 
-        assertEquals (0, actual);
+        assertEquals(0, actual);
 
+    }
+    @Test
+        public void shouldNextStationOverMaxWithCount() {
+            Radio radio = new Radio(15);
+            radio.setCurrentStation(15);
+            int actual = radio.nextStation();
+
+            assertEquals(0, actual);
     }
 
     @Test
@@ -93,15 +106,16 @@ class RadioTest {
         radio.setCurrentStation(1);
         int actual = radio.prevStation();
 
-        assertEquals (0, actual);
+        assertEquals(0, actual);
     }
+
     @Test
     public void shouldPrevStationMin() {
         Radio radio = new Radio();
         radio.setCurrentStation(0);
         int actual = radio.prevStation();
 
-        assertEquals (9, actual);
+        assertEquals(10, actual);
     }
 
     @Test
@@ -110,7 +124,7 @@ class RadioTest {
         radio.setCurrentStation(-1);
         int actual = radio.prevStation();
 
-        assertEquals (9, actual);
+        assertEquals(10, actual);
     }
-}
 
+}
