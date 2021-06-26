@@ -82,6 +82,7 @@ class RadioTest {
         assertEquals(0, actual);
 
     }
+
     @Test
     public void shouldNextStationOverMax() {
         Radio radio = new Radio();
@@ -91,13 +92,14 @@ class RadioTest {
         assertEquals(0, actual);
 
     }
-    @Test
-        public void shouldNextStationOverMaxWithCount() {
-            Radio radio = new Radio(15);
-            radio.setCurrentStation(15);
-            int actual = radio.nextStation();
 
-            assertEquals(0, actual);
+    @Test
+    public void shouldNextStationOverMinWithCount() {
+        Radio radio = new Radio(15);
+        radio.setCurrentStation(13);
+        int actual = radio.nextStation();
+
+        assertEquals(14, actual);
     }
 
     @Test
@@ -115,7 +117,7 @@ class RadioTest {
         radio.setCurrentStation(0);
         int actual = radio.prevStation();
 
-        assertEquals(10, actual);
+        assertEquals(9, actual);
     }
 
     @Test
@@ -124,7 +126,7 @@ class RadioTest {
         radio.setCurrentStation(-1);
         int actual = radio.prevStation();
 
-        assertEquals(10, actual);
+        assertEquals(9, actual);
     }
 
 }
